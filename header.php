@@ -35,8 +35,8 @@
     <link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/images/apple-touch-icon.png"> 
     <link rel="stylesheet" href="<?php bloginfo('template_url')?>/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-    <!--[if lte IE 9]><script src="<?php bloginfo('template_url')?>/scripts/html5.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="<?php bloginfo('template_url')?>/scripts/respond.min.js"></script><![endif]-->
+    <!--[if lte IE 9]><script src="<?php bloginfo('template_url')?>/js/lib/html5shiv.min.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="<?php bloginfo('template_url')?>/js/lib/respond.min.js"></script><![endif]-->
     <?php wp_head(); ?>
 
 </head>
@@ -71,7 +71,7 @@
         </div>
     </header>
 <?php }else{ ?>
-    <header id="header" role="banner"<?php if(is_home()){echo 'style="position: absolute;background: rgba(0,0,0,.8);"';} ?>>
+    <header id="header" role="banner"<?php if(is_home()){echo ' style="position: absolute;background: rgba(0,0,0,.8);"';} ?>>
         <div class="header-content">
             <a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
             <h1 class="logo"><a href="<?php bloginfo('url'); ?>">双鱼bizhongbio</a></h1>
