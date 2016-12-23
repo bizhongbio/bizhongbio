@@ -25,12 +25,20 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="msapplication-TileColor" content="#fff">
     <meta name="msapplication-TileImage" content="<?php bloginfo('template_url'); ?>/images/apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@<?php bloginfo('name'); ?>">
+    <meta name="twitter:title" content="<?php echo is_home() ? get_bloginfo('name') : trim(wp_title('', false)); ?>">
+    <meta name="twitter:description" content="<?php if(is_single()){$description = '';$description1 = get_post_meta($post->ID, 'description', true);$description2 = str_replace('\n','',mb_strimwidth(strip_tags($post->post_content), 0, 200, '…', 'utf-8'));$description = $description1 ? $description1 : $description2;echo $description;}else{description();}?>">
+    <meta name="twitter:image" content="<?php bloginfo('template_url'); ?>/screenshot.jpg">
     <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
     <meta property="og:url" content="<?php ogUrl(); ?>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo is_home() ? get_bloginfo('name') : trim(wp_title('', false)); ?>">
     <meta property="og:description" content="<?php if(is_single()){$description = '';$description1 = get_post_meta($post->ID, 'description', true);$description2 = str_replace('\n','',mb_strimwidth(strip_tags($post->post_content), 0, 200, '…', 'utf-8'));$description = $description1 ? $description1 : $description2;echo $description;}else{description();}?>">
     <meta property="og:image" content="<?php bloginfo('template_url'); ?>/screenshot.jpg">
+    <meta itemprop="name" content="<?php echo is_home() ? get_bloginfo('name') : trim(wp_title('', false)); ?>">
+    <meta itemprop="description" content="<?php if(is_single()){$description = '';$description1 = get_post_meta($post->ID, 'description', true);$description2 = str_replace('\n','',mb_strimwidth(strip_tags($post->post_content), 0, 200, '…', 'utf-8'));$description = $description1 ? $description1 : $description2;echo $description;}else{description();}?>">
+    <meta itemprop="image" content="<?php bloginfo('template_url'); ?>/screenshot.jpg">
     <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico">
     <link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/images/apple-touch-icon.png"> 
     <link rel="stylesheet" href="<?php bloginfo('template_url')?>/font-awesome/css/font-awesome.min.css">
