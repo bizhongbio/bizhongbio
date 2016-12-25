@@ -48,7 +48,6 @@
                 <a href="#video"></a>
             </nav>
         </article> -->
-        <!-- <section class="billboard"></section> -->
         <section id="articles">
             <div class="articles">
                 <?php if(have_posts()) : while(have_posts()) : the_post(); ?><article class="article">
