@@ -65,9 +65,9 @@
         <div class="header-content">
             <a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
 <?php if(is_single()){ ?>
-            <div class="logo"><a href="<?php bloginfo('url'); ?>">双鱼bizhongbio</a></div>
+            <div class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
 <?php }else{ ?>
-            <h1 class="logo"><a href="<?php bloginfo('url'); ?>">双鱼bizhongbio</a></h1>
+            <h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
 <?php } ?>
             <nav class="cat-nav" aria-label="Local navigation" role="navigation">
                 <?php wp_nav_menu(array('menu' => 'cat-nav','depth' => 1)); ?>
@@ -84,7 +84,7 @@
     <header id="header" role="banner"<?php if(is_home()){echo ' style="position: absolute;background: rgba(0,0,0,.8);"';} ?>>
         <div class="header-content">
             <a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
-            <h1 class="logo"><a href="<?php bloginfo('url'); ?>">双鱼bizhongbio</a></h1>
+            <h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
             <nav class="nav" aria-label="Global navigation" role="navigation">
                 <?php if(is_home() || is_page()){wp_nav_menu(array('menu' => 'nav','depth' => 1));}else{wp_nav_menu(array('menu' => 'cat-nav','depth' => 1));}; ?>
 
