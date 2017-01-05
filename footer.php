@@ -11,7 +11,7 @@
             </aside>
 <?php } ?>
             <section class="copyright">
-                <p>版权所有 &copy; <?php echo date('Y') ?> <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> <a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
+                <p>&copy; 2014-<?php echo date('Y') ?> <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> <a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
             </section>
         </div>
         <a id="go-top" href="javascript:scroll(0,0);"><i class="fa fa-long-arrow-up"></i></a>
