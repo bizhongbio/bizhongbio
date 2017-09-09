@@ -11,7 +11,10 @@
             </aside>
 <?php } ?>
             <section class="copyright">
-                <p>&copy; 2014-<?php echo date('Y') ?> <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> <a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
+                <p>&copy; 2014-<?php echo date('Y') ?> <a href="<?php bloginfo('template_url')?>" target="_blank"><?php bloginfo('name'); ?></a><a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
+                <!-- 作者声明主题出处，不可删除！ -->
+                <p style="margin: 15px 0;">自豪地采用 <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> 主题</p>
+                <!-- 作者声明主题出处，不可删除！ -->
             </section>
         </div>
         <a id="go-top" href="javascript:scroll(0,0);"><i class="fa fa-long-arrow-up"></i></a>

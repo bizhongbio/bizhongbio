@@ -47,7 +47,7 @@
                 <a href="#work"></a>
                 <a href="#video"></a>
             </nav>
-        </article> -->
+        </article>
         <section id="articles">
             <div class="articles">
                 <?php if(have_posts()) : while(have_posts()) : the_post(); ?><article class="article">
@@ -58,7 +58,7 @@
                         </a>
                         <figcaption>
                             <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-                            <span><i class="fa fa-calendar-check-o"></i><?php the_time('Y.m.d'); ?> <i class="fa fa-eye"></i><?php echo getPostViews(get_the_ID()); ?> <i class="fa fa-commenting"></i><?php comments_popup_link("0", "1", "%"); ?></span>
+                            <span><i class="fa fa-calendar-check-o"></i><?php the_time('Y.m.d'); ?> <i class="fa fa-eye"></i><?php echo getPostViews(get_the_ID()); ?> <i class="fa fa-commenting"></i><?php comments_popup_link('0', '1', '%'); ?></span>
                         </figcaption>
                     </figure>
                 </article>

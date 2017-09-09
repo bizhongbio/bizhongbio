@@ -8,7 +8,7 @@
                     <span><i class="fa fa-user-secret"></i><?php the_author(); ?></span>
                     <span><i class="fa fa-bookmark"></i><?php the_tags('', ', ', ''); ?></span>
                     <span><i class="fa fa-eye"></i><?php setPostViews(get_the_ID()); ?><?php echo getPostViews(get_the_ID()); ?></span>
-                    <span><i class="fa fa-commenting"></i><?php comments_popup_link("0", "1", "%"); ?></span>
+                    <span><i class="fa fa-commenting"></i><?php comments_popup_link('0', '1', '%'); ?></span>
                 </section>
                 <section class="article-content">
                     <?php the_content(); ?>
