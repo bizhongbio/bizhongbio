@@ -1,202 +1,308 @@
-function main(){
-    var $ = function(id){
-        return document.getElementById(id);
-    };
+/*
+Theme Name: Bizhongbio
+Theme URI: https://github.com/bizhongbio/bizhongbio
+Author: Bizhong Lan
+Author URI: https://bizhong.github.io/
+Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
+Version: 2.0.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, left-sidebar, accessibility-ready, custom-header, custom-menu, featured-images, flexible-header, microformats, threaded-comments, blog
+Text Domain: bizhongbio
 
-    var onoscroll = $("home") || $("category") || $("page") ||$("single") || $("archive") || $("search") || $("tag") || $("404") || $("feed"),
-        oBody = document.body || document.getElementsByTagName('body')[0],
-        oHeader = $('header') || $('cat-header'),
-        oHeaderW = oHeader.getElementsByTagName('div')[0].offsetWidth,
-        oNav = $('btn-nav'),
-        oMenuNav = oHeader.getElementsByTagName('ul')[0] || $('menu-cat-nav'),
-        oShowNav = true,
-        oSearch = $('btn-search'),
-        oSearchform = $('searchform'),
-        oSearchInput = $('s'),
-        oGoTop = $('go-top'),
-        screenWidth = document.documentElement.clientWidth || document.body.clientWidth,
-        screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
-
-    var addEvent = function(obj,event,fn){
-        if(obj.addEventListener){
-            obj.addEventListener(event,fn,false);
-        }else if(obj.attachEvent){
-            obj.attachEvent('on'+event,fn);
-        }
-    };
-
-    //首页图片轮播
-    var slides = function(){
-        var oPerNum = oSlideIndex,
-            oNextNum = len - 1 - oSlideIndex;
-        oSlideAll[oSlideIndex].style.left = '0%';
-        for(var i = 0; i < oPerNum; i++){
-            oSlideAll[i].style.left = (-(oPerNum - i) * 100) + '%';
-        }
-        for(var j = oSlideIndex + 1; j < len; j++){
-            oSlideAll[j].style.left = ((j - oSlideIndex) * 100) + '%';
-        }
-        for(var k = 0; k < items; k++){
-            if(k == oSlideIndex){
-                oSlidesNavAll[k].className = 'current';
-            }else{
-                oSlidesNavAll[k].removeAttribute('class');
-            }
-        }
-        oSlideIndex >= len - 1 ? oSlideIndex = 0 : oSlideIndex++;
-    };
-
-    if($('home')){
-        var oSlides = $('hero-slides'),
-            oSlideAll = oSlides.getElementsByTagName('section'),
-            len = oSlideAll.length,
-            oSlidesNav = oSlides.getElementsByTagName('nav')[0],
-            oSlidesNavAll = oSlidesNav.getElementsByTagName('a'),
-            items = oSlidesNavAll.length,
-            oSlideIndex = 1,
-            timer = setInterval(slides, 6000);
-        oSlides.onmouseover = function(){// 鼠标移入时触发
-            clearInterval(timer);
-        };
-        oSlides.onmouseout = function(){// 鼠标移出时触发
-            timer = setInterval(slides,6000);
-        };
-        for(var i = 0; i < items; i++){
-            oSlidesNavAll[i].index = i;
-            oSlidesNavAll[i].onclick = function(e){// 点击切换
-                clearInterval(timer);
-                oSlideIndex = this.index;
-                slides();
-                stopDefault(e);
-            };
-        }
-        document.onkeydown = function(event){// 按键盘左右键时触发
-            var e = event || window.event || arguments.callee.caller.arguments[0];
-            if(e && e.keyCode == 37){// 键盘左键
-                clearInterval(timer);
-                oSlideIndex >= 2 ? oSlideIndex -= 2 : oSlideIndex += 2;
-                slides();
-            }
-            if(e && e.keyCode == 39){// 键盘右键
-                clearInterval(timer);
-                slides();
-            }
-        };
-        // 移动端左右滑动事件
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+$(function() {
+    var pageName = $(document.body).attr('id');// 页面名称
+    
+    switch(pageName) {
+        case 'home':// 首页
+            handleHome();
+            break;
+        case 'category':// 分类目录页面
+            handleCategory();
+        case 'single':// 文章页面
+        case 'search':// 搜索页面
+        case 'tag':// 标签页面
+            catHeaderFixed();
+            break;
+        default:// 其它
+            console.log('Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.');
     }
 
-    // 搜索框的显示与隐藏
-    var showSearch = function(){
-        if(screenWidth <= 1023){
-            oSearchform.style.cssText = 'display:block;';
-            oSearchInput.style.width = (oHeaderW - 32) + 'px';
-            oSearchInput.focus();
-            var oMask = document.createElement('div');
-            oMask.id = 'mask';
-            oBody.appendChild(oMask);
-            oSearchInput.onclick = function(e){
-                cancelBubble(e);
+    // ------------------------------------------------------------------ 公共
+
+    // 导航菜单显示与隐藏 手机端点击汉堡菜单按钮
+    $('#btn-nav').on('click', function() {
+        $('#header, #cat-header').toggleClass('show-nav');
+        $('#btn-search').toggle();
+        if ($('#header, #cat-header').hasClass('show-nav')) {
+            $('#btn-nav i').removeClass('fa-navicon').addClass('fa-remove');
+            $('body, html').on('touchmove', function(event) {
+                event.preventDefault();
+            });
+        } else {
+            $('#btn-nav i').removeClass('fa-remove').addClass('fa-navicon');
+            $('body, html').off('touchmove');
+        }
+    });
+
+    // 搜索框显示与隐藏 手机、平板端点击搜索按钮
+    $('#btn-search').on('click', function() {
+        $('#searchform').show();
+        $('#s').focus();
+
+        // 判断页面是否存在蒙层元素 存在，显示；否则创建
+        if ($('#mask').length > 0) {
+            $('#mask').show();
+        } else {
+            $('<div id="mask"></div>').appendTo('body');
+        }
+        $('body, html').on('touchmove', function(event) {
+            event.preventDefault();
+        });
+
+        // 隐藏搜索框 点击蒙层
+        $('#mask').on('click', function() {
+            $('#searchform').css('display', '');
+            $('#s').blur();
+            $('#mask').hide();
+            $('body, html').off('touchmove');
+        });
+    });
+
+    // 分类目录头部固定 滚动条滚动全局头部高度以上，分类目录头部固定；否则不固定
+    function catHeaderFixed() {
+        var globalHeaderHeight = $('.global-header').height();
+        
+        $(window).on('scroll', function() {
+            if ($(this).scrollTop() > globalHeaderHeight) {
+                $('#cat-header').addClass('cat-header-fixed');
+            } else {
+                $('#cat-header').removeClass('cat-header-fixed');
+            }
+        });
+    }
+
+    // 返回顶部按钮显示与隐藏 滚动条滚动600像素以上，返回顶部按钮出现；否则隐藏
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() > 600) {
+            $('#go-top').fadeIn(300);
+        } else {
+            $('#go-top').fadeOut(300);
+        }
+    });
+
+    // 返回顶部 点击返回顶部按钮
+    $('#go-top').on('click', function(event) {
+        $('body, html').animate({'scrollTop': '0'}, 600);
+        event.preventDefault();
+    });
+
+    // ------------------------------------------------------------------ 首页
+
+    // 首页处理主函数
+    // - 轮播图（切换方式：自动、点击轮播图导航菜单、按下键盘左右方向键、触屏设备左右滑动）
+    // - 加载下一页 点击加载更多按钮
+    function handleHome() {
+        var len = $('#hero-slides .slide').length,// 轮播图张数
+            slideIndex = 1,// 当前轮播图索引
+            timer = null,// 定时器
+            startPosition = {},// 开始位置
+            endPosition = {},// 结束位置
+            isScrolling = -1, // 判断是水平滚动还是垂直滚动
+            onloading = false;// 是否正在加载
+
+        // 切换轮播图
+        function slidesAnimation() {
+            $('#hero-slides .slide').each(function(i) {
+                $(this).eq(slideIndex).css('left', '0%').end().not(slideIndex).css('left', (-(slideIndex - i) * 100) + '%');
+                $('.slides-nav a').eq(slideIndex).addClass('current').siblings().removeClass('current');
+            });
+            slideIndex >= len - 1 ? slideIndex = 0 : slideIndex++;
+        }
+
+        // 切换轮播图 自动
+        timer = setInterval(slidesAnimation, 6000);
+
+        // 切换轮播图 点击轮播图导航菜单
+        $('.slides-nav a').each(function() {
+            $(this).on('click', function(event) {
+                clearInterval(timer);
+                slideIndex = $(this).index();
+                slidesAnimation();
+                event.preventDefault();
+            });
+        });
+
+        // 切换轮播图 按下键盘左右方向键
+        $(document).on('keydown', function(event) {
+            switch(event.keyCode) {
+                case 37:// 左方向键
+                    clearInterval(timer);
+                    slideIndex >= 2 ? slideIndex -= 2 : slideIndex += 2;
+                    slidesAnimation();
+                    break;
+                case 39:// 右方向键
+                    clearInterval(timer);
+                    slidesAnimation();
+                    break;
+            }
+        });
+
+        // 切换轮播图 触屏设备左右滑动
+        // - 滑动开始
+        $('#hero-slides').on('touchstart', function(event) {
+            var touch = event.targetTouches[0];
+            startPosition = {
+                x: touch.pageX,
+                y: touch.pageY
             };
-            $('mask').onclick = function(){
-                oSearchform.style.cssText = '';
-                oSearchInput.style.width = 'auto';
-                oSearchInput.blur();
-                oBody.removeChild(oMask);
-            };
-        }
-    };
+        });
 
-    // 阻止元素默认行为
-    var stopDefault = function(e){
-        if(e && e.preventDefault){// 非IE
-            e.preventDefault();
-        }else{// IE
-            window.event.returnValue = false;
-        }
-        return false;
-    };
-
-    // 阻止冒泡事件
-    var cancelBubble = function(e){
-        if(e && e.stopPropagation){// 非IE
-            e.stopPropagation();
-        }else{// IE
-            window.event.cancelBubble = true;
-        }
-        return false;
-    };
-
-    // 导航的显示与隐藏
-    var showNav = function(){
-        if(screenWidth <= 767){
-            var oNavIcon = oNav.getElementsByTagName('i')[0];
-            if(oShowNav){
-                oMenuNav.style.height = '321px';
-                oNavIcon.className = 'fa fa-remove';
-                oSearch.style.display = 'none';
-                if($('menu-cat-nav')){
-                    $('menu-cat-nav').style.top = '48px';
-                }
-                var oMask = document.createElement('div');
-                oMask.id = 'mask';
-                oBody.appendChild(oMask);
-                oShowNav = false;
-                $('mask').onclick = function(){
-                    oMenuNav.style.height = '0px';
-                    oNavIcon.className = 'fa fa-navicon';
-                    oSearch.style.cssText = '';
-                    oBody.removeChild(oMask);
-                    oShowNav = true;
+        // - 滑动
+        $('#hero-slides').on('touchmove', function(event) {
+            if (event.targetTouches.length === 1) {
+                var touch = event.targetTouches[0];
+                endPosition = {
+                    x: touch.pageX - startPosition.x,
+                    y: touch.pageY - startPosition.y
                 };
-            }else{
-                oMenuNav.style.height = '0px';
-                oNavIcon.className = 'fa fa-navicon';
-                oSearch.style.cssText = '';
-                oBody.removeChild($('mask'));
-                oShowNav = true;
+                isScrolling = Math.abs(endPosition.x) > Math.abs(endPosition.y) ? 0 : 1;// 0：水平滚动，1：垂直滚动
+                if (isScrolling === 0) {// 水平滚动
+                    event.preventDefault();
+                }
             }
-        }
-    };
+        });
 
-    // 滚动特效
-    var scrollEvevt = function(){
-        var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop;
-        // 返回顶部
-        if(scrollHeight >= 900){
-            oGoTop.style.display = 'block';
-        }else{
-            oGoTop.style.display = 'none';
-        }
-        if($('category') || $('tag') || $('search') || $('single')){
-            var oMenuCatNav = $('menu-cat-nav');
-            if(scrollHeight >= 32){
-                oHeader.className = 'cat-header-fixed';
-                oMenuCatNav.style.top = '48px';
-            }else{
-                oHeader.className = 'cat-header';
-                oMenuCatNav.style.top = '80px';
+        // - 滑动释放
+        $('#hero-slides').on('touchend', function(event) {
+            if (isScrolling === 0) {// 水平滚动
+                if (endPosition.x > 10) {// 右滑
+                    clearInterval(timer);
+                    slideIndex >= 2 ? slideIndex -= 2 : slideIndex += 2;
+                    slidesAnimation();
+                } else if (endPosition.x < -10) {// 左滑
+                    clearInterval(timer);
+                    slidesAnimation();
+                }
             }
+        });
+
+        // 判断是否含有下一页
+        if (!$('.load-more a').length) {
+            $('.load-more').remove();
         }
-    };
+    
+        // 加载下一页 点击加载更多按钮
+        $('.main').on('click', '.load-more a', function() {
+            if (onloading) {
+                return false;
+            } else {
+                $.ajax({
+                    type: 'get',
+                    url: $(this).attr('href'),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                        $('.load-more').find('a').text('正在加载');
+                        onloading = true;
+                    },
+                    error: function(request) {
+                        console.log(request.responseText);
+                    },
+                    statusCode: {
+                        404: function() {
+                            console.log('404');
+                        }
+                    },
+                    success: function(data) {
+                        // 获取文章所在的 DOM 及下一页链接
+                        var result = $(data).find('.articles .article');
+                        var nextHref = $(data).find('.load-more a').attr('href');
 
-    addEvent(oSearch,'click',function(){
-        showSearch();
-    });
+                        // 渐显新内容
+                        $('.load-more').before(result.fadeIn(400));
+                        $('.load-more').find('a').text('加载更多');
+                        if (nextHref != undefined) {
+                            $('.load-more a').attr('href', nextHref);
+                        } else {// 若没有链接，即为最后一页
+                            $('.load-more').remove();
+                        }
+                        onloading = false;
+                    }
+                });
+            }
+            return false;
+        });
+    }
 
-    addEvent(oNav,'click',function(){
-        showNav();
-    });
+    // ------------------------------------------------------------------ 分类目录页面
 
-    addEvent(window,'scroll',function(){
-        scrollEvevt();
-    });
+    // 分类目录页面处理主函数
+    // - 自动加载更多 滚动条接近页面底部
+    function handleCategory() {
+        var onloading = false;// 是否正在加载
 
-    addEvent(window,'resize',function(){
-        screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
-        screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        oHeaderW = oHeader.getElementsByTagName('div')[0].offsetWidth;
-        scrollEvevt();
-    });
-}
+        // 判断是否含有下一页
+        if (!$('.load-more a').length) {
+            $('.load-more').remove();
+        }
 
-document.addEventListener('DOMContentLoaded', main, false);
+        // 加载下一页 点击加载更多按钮
+        $('.main').on('click', '.load-more a', function() {
+            if (onloading) {
+                return false;
+            } else {
+                $.ajax({
+                    type: 'get',
+                    url: $(this).attr('href'),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                        $('.load-more i').show();
+                        onloading = true;
+                    },
+                    error: function(request) {
+                        console.log(request.responseText);
+                    },
+                    statusCode: {
+                        404: function() {
+                            console.log('404');
+                        }
+                    },
+                    success: function(data) {
+                        // 获取文章所在的 DOM 及下一页链接
+                        var result = $(data).find('.posts .post');
+                        var nextHref = $(data).find('.load-more a').attr('href');
+
+                        // 渐显新内容
+                        $('.load-more').before(result.fadeIn(400));
+                        $('.load-more i').hide();
+                        if (nextHref != undefined) {
+                            $('.load-more a').attr('href', nextHref);
+                        } else {// 若没有链接，即为最后一页
+                            $('.load-more').remove();
+                        }
+                        onloading = false;
+                    }
+                });
+            }
+            return false;
+        });
+
+        // 自动加载更多 滚动条接近页面底部
+        $(window).on('scroll', function() {
+            var windowHeight = $(this).height(),
+                documentHeight = $(document).height(),
+                footerHeight = $('.footer').height();
+
+            if ($(document).scrollTop() + windowHeight > documentHeight - footerHeight) {
+                if (onloading) {
+                    return false;
+                } else {// 自动触发点击加载下一页
+                    $('.load-more a').click();
+                }
+            }
+        });
+    }
+});
