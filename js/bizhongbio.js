@@ -7,7 +7,7 @@ Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog T
 Version: 2.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: one-column, two-columns, left-sidebar, accessibility-ready, custom-header, custom-menu, featured-images, flexible-header, microformats, threaded-comments, blog
+Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
 Text Domain: bizhongbio
 
 This theme, like WordPress, is licensed under the GPL.
@@ -50,12 +50,12 @@ $(function() {
 
     // 搜索框显示与隐藏 手机、平板端点击搜索按钮
     $('#btn-search').on('click', function() {
-        $('#searchform').show();
+        $('#searchform').fadeIn(300);
         $('#s').focus();
 
         // 判断页面是否存在蒙层元素 存在，显示；否则创建
         if ($('#mask').length > 0) {
-            $('#mask').show();
+            $('#mask').fadeIn(300);
         } else {
             $('<div id="mask"></div>').appendTo('body');
         }
@@ -67,7 +67,7 @@ $(function() {
         $('#mask').on('click', function() {
             $('#searchform').css('display', '');
             $('#s').blur();
-            $('#mask').hide();
+            $('#mask').fadeOut(150);
             $('body, html').off('touchmove');
         });
     });
@@ -90,7 +90,7 @@ $(function() {
         if ($(this).scrollTop() > 600) {
             $('#go-top').fadeIn(300);
         } else {
-            $('#go-top').fadeOut(300);
+            $('#go-top').fadeOut(150);
         }
     });
 
