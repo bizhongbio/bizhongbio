@@ -1,5 +1,6 @@
 # Bizhongbio
 
+> Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
 > Bizhongbio 是一个免费、简约、响应式的 WordPress 博客主题。
 
 ### 文档目录
@@ -89,36 +90,36 @@ http://ping.blog.qikoo.com/rpc2.php
 
 打开项目文件手动修改（或直接登录后台，点击“外观”下的“编辑”）：
 
-### 关于
+- 关于
 
-- 在 **关于页面模板** `about.php` 文件中 **第9~21行** 修改即可。
+在**关于页面模板** `about.php` 文件中第**9~25**行修改即可。
 
-### 友情链接
+- 友情链接
 
-- 在 **主题页脚** `footer.php` 文件中 **第8行** 增加即可；
-- 在 **边栏** `sidebar.php` 文件中 **第25行** 增加即可。
+在**主题页脚** `footer.php` 文件中第**6**行添加即可。
 
-### GitHub 地址
+- GitHub 地址
 
-- 在 **边栏** `sidebar.php` 文件中 **第3行** 修改即可。
+- 在**边栏** `sidebar.php` 文件中第**3**行修改即可。
 
-### 网站描述（description）
+- 网站描述（description）
 
-- 在 **模版函数** `functions.php` 文件中 **第63~91行** 修改即可。
+- 在 **模版函数** `functions.php` 文件中第**76~112**行修改即可。
 
-### 网站关键字（keywords）
+- 网站关键字（keywords）
 
-- 在 **模版函数** `functions.php` 文件中 **第94~124行** 修改即可。
+- 在 **模版函数** `functions.php` 文件中第**115~157**行修改即可。
 
-### 按需加载 Crayon Syntax Highlighter 插件
+- 按需加载 Crayon Syntax Highlighter 插件
 
-插件版本、主题设置不同等原因需要做相应修改！
+**插件版本、主题设置不同等原因需要做相应修改！**
 
-- 在 **模版函数** `functions.php` 文件中 **第311~329行** 修改即可。
+- 在**模版函数** `functions.php` 文件中第**279~285**行修改即可。
 
 ## 更新记录
 
-- 2.0.2 修复 Bug，整合 JS 文件（用 jQuery） [2017-09-12]
+- 2.0.3 更新代码，代码统一缩进2个空格 [2017-09-15]
+- 2.0.2 修复 Bug，整合 JS 文件（统一用 jQuery） [2017-09-12]
 - 2.0.1 修复 Bug，更新主题图标，增加主题声明 [2017-09-09]
 - 2.0.0 开源 Bizhongbio 主题 [2016-12-15]
 

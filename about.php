@@ -1,24 +1,28 @@
 <?php
 /*
-Template Name:关于
+Template Name: 关于
 */
 ?>
 <?php get_header(); ?>
     <main class="main" role="main">
-        <div class="content">
-            <section class="about">
-                <h2><?php bloginfo('name'); ?></h2>
-                <p><?php bloginfo('description'); ?></p>
-                <div class="aboutme">
-                    <img src="<?php bloginfo('url'); ?>/images/aboutme-logo.svg" alt="<?php bloginfo('name'); ?>">
-                </div>
-                <div class="social">
-                    <a href="https://github.com/bizhong" title="bizhong (Bizhong Lan) · GitHub" target="_blank"><i class="fa fa-github"></i></a>
-                    <a href="https://www.behance.net/bizhong" title="Bizhong Lan on Behance" target="_blank"><i class="fa fa-behance"></i></a>
-                    <a href="http://weibo.com/bizhongbio" title="兰必钟的微博" target="_blank"><i class="fa fa-weibo"></i></a>
-                    <a href="mailto:bizhongbio@outlook.com" title="Email Me" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                </div>
-            </section>
-        </div>
+      <div class="content">
+        <section class="about">
+          <!-- 在这里修改标题，默认显示站点标题 -->
+          <h2><?php bloginfo('name'); ?></h2>
+          <!-- 在这里修改段落，默认显示站点副标题 -->
+          <p><?php bloginfo('description'); ?></p>
+          <!-- 在这里修改图片，尺寸：240 x 240（一倍图）或480 x 480（二倍图） -->
+          <div class="aboutme">
+            <img src="<?php bloginfo('url'); ?>/images/aboutme-logo.svg" alt="<?php bloginfo('name'); ?>">
+          </div>
+          <!-- 在这里修改社交媒体 -->
+          <div class="social">
+            <a href="https://github.com/bizhong" title="bizhong (Bizhong Lan) · GitHub" target="_blank"><i class="fa fa-github"></i></a>
+            <a href="https://www.behance.net/bizhong" title="Bizhong Lan on Behance" target="_blank"><i class="fa fa-behance"></i></a>
+            <a href="http://weibo.com/bizhongbio" title="兰必钟的微博" target="_blank"><i class="fa fa-weibo"></i></a>
+            <a href="mailto:bizhongbio@outlook.com" title="Email Me" target="_blank"><i class="fa fa-envelope-o"></i></a>
+          </div>
+        </section>
+      </div>
     </main>
 <?php get_footer(); ?>
