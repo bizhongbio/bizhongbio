@@ -71,7 +71,7 @@
               <img src="<?php bloginfo('template_url'); ?>/images/sorry.jpg" alt="抱歉">
               <figcaption>
                 <h2>抱歉</h2>
-                <span>还没有与此相关的文章</span>
+                <span>还没有与此相关的文章。</span>
               </figcaption>
             </figure>
           </article>

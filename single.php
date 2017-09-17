@@ -14,7 +14,7 @@
             <?php the_content(); ?>
           </section>
           <section class="article-copyright">
-            <p>感谢你的阅读，本文版权归 <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> 所有，转载时请注明出处。<br>注明出处格式：<?php bloginfo('name'); ?>（<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_permalink(); ?></a>）</p>
+            <p>感谢你的阅读，本文版权归 <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> 所有，转载请注明出处。<br>注明出处格式：本文转载自：<?php bloginfo('name'); ?>（<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_permalink(); ?></a>）</p>
           </section>
           <section class="article-adjacent">
             <?php echo articleAdjacent(); ?>
@@ -71,7 +71,7 @@
                 wp_reset_query();
               }
               if ($i == 0) {
-                echo '<p>还没有与此相关的文章</p>';
+                echo '<p>还没有相关文章。</p>';
               }
             ?>
             </ul>

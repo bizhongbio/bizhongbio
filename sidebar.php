@@ -1,7 +1,7 @@
 <aside class="sidebar">
           <article class="promos">
             <!-- 在这里修改 GitHub 地址 -->
-            <a href="https://github.com/bizhong" title="bizhong (Bizhong Lan) · GitHub" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+            <a href="https://github.com/bizhong" title="bizhong (兰必钟) · GitHub" target="_blank"><i class="fa fa-github"></i> GitHub</a>
           </article>
           <section class="recommended-posts">
             <h2>推荐文章</h2>
@@ -14,8 +14,7 @@
             ?>
 
               <li>
-                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo mb_strimwidth(get_the_title(), 0, 20, '...'); ?></a>
-                <span><?php comments_popup_link('评论0', '评论1', '评论%'); ?></span>
+                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
               </li><?php endwhile; wp_reset_query(); ?>
             </ul>
           </section>

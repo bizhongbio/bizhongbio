@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="<?php headDescription(); ?>">
     <meta name="keywords" content="<?php headKeywords(); ?>">
-    <meta name="author" content="兰必钟 (Bizhong Lan), https://bizhong.github.io/">
+    <meta name="author" content="兰必钟, https://bizhong.github.io/">
     <meta name="robots" content="index, follow">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?>">
@@ -86,7 +86,7 @@
 
         </nav>
   <?php else : ?>
-    <header id="header" role="banner"<?php if (is_home()) echo ' style="position: absolute;background: rgba(0, 0, 0, .8);"'; ?>>
+    <header id="header" role="banner"<?php if (is_home()) echo ' style="position: absolute; background: rgba(0, 0, 0, .8);"'; ?>>
       <div class="header-content">
         <a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
         <h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>

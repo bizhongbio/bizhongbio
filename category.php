@@ -15,7 +15,7 @@
           </div>
           <?php else : ?><article class="post">
             <h2>抱歉</h2>
-            <p>还没有与“<?php single_cat_title(); ?>”相关的文章</p>
+            <p>还没有与“<?php single_cat_title(); ?>”相关的文章。</p>
           </article>
           <?php endif; ?>
         </section>

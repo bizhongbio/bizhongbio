@@ -8,8 +8,8 @@
           </ul>
         </aside>
         <section class="copyright">
-          <!-- 不可删除“采用 Bizhongbio 主题”声明 -->
-          <p>&copy; 2014-<?php echo date('Y'); ?> <a href="<?php bloginfo('template_url'); ?>" target="_blank"><?php bloginfo('name'); ?></a> · 采用 <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> 主题 · <a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
+          <!-- 尊重作者，请不要私自删除“采用 Bizhongbio 主题”主题版权声明 -->
+          <p>&copy; <?php echo date('Y'); ?> <a href="<?php bloginfo('template_url'); ?>" target="_blank"><?php bloginfo('name'); ?></a> · 采用 <a href="https://github.com/bizhongbio/bizhongbio" target="_blank">Bizhongbio</a> 主题 · <a href="<?php bloginfo('url'); ?>/sitemap.html" target="_blank">网站地图</a></p>
         </section>
       </div>
       <a id="go-top" href="javascript:scroll(0,0);"><i class="fa fa-long-arrow-up"></i></a>

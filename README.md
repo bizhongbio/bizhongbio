@@ -1,7 +1,8 @@
 # Bizhongbio
 
+Bizhongbio 是一个免费、简约、响应式的 WordPress 博客主题。
+
 > Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-> Bizhongbio 是一个免费、简约、响应式的 WordPress 博客主题。
 
 ### 文档目录
 

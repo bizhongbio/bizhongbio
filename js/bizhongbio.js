@@ -4,7 +4,7 @@ Theme URI: https://github.com/bizhongbio/bizhongbio
 Author: Bizhong Lan
 Author URI: https://bizhong.github.io/
 Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-Version: 2.0.3
+Version: 2.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
@@ -83,7 +83,7 @@ $(function() {
     });
   }
 
-  // 返回顶部按钮显示与隐藏 滚动条滚动600像素以上，返回顶部按钮出现；否则隐藏
+  // 返回顶部按钮显示与隐藏 滚动条滚动 600 像素以上，返回顶部按钮出现；否则隐藏
   $(window).on('scroll', function() {
     if ($(this).scrollTop() > 600) {
       $('#go-top').fadeIn(300);

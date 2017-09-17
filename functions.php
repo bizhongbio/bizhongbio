@@ -113,7 +113,7 @@ function headDescription() {
 
 // 自定义设置网站关键字 keywords
 function headKeywords() {
-  if (is_single()) {
+  if (is_single()) {// 文章页面
     $keywords = '';
     if ($keywords == '') {
       $tags = wp_get_post_tags($post->ID);
@@ -183,23 +183,23 @@ function headUrl($output = '') {
 
 // 自定义设置网站 body id
 function bodyId() {
-  if (is_home()) {
+  if (is_home()) {// 首页
     echo 'home';
-  } else if (is_category()) {
+  } else if (is_category()) {// 分类目录页面
     echo 'category';
-  } else if (is_page()) {
+  } else if (is_page()) {// 自定义页面
     echo 'page-' . get_page($post_id)->post_name;
-  } else if (is_single()) {
+  } else if (is_single()) {// 文章页面
     echo 'single';
-  } else if (is_archive()) {
+  } else if (is_archive()) {// 文章归档页面
     echo 'archive';
-  } else if (is_search()) {
+  } else if (is_search()) {// 搜索页面
     echo 'search';
-  } else if (is_tag()) {
+  } else if (is_tag()) {// 标签页面
     echo 'tag';
-  } else if (is_404()) {
+  } else if (is_404()) {// 404页面
     echo '404';
-  } else if (is_feed()) {
+  } else if (is_feed()) {// 订阅页面
     echo 'feed';
   }
 }
@@ -215,11 +215,11 @@ function my_css_attributes_filter($var) {
 
 // 自定义设置页面分页文章数
 function custom_posts_per_page($query) {
-  if (is_home()) {
+  if (is_home()) {// 首页
     $query->set('posts_per_page', 24);
-  } else if (is_category()) {
+  } else if (is_category()) {// 分类目录页面
     $query->set('posts_per_page', 16);
-  } else if (is_search()) {
+  } else if (is_search()) {// 搜索页面
     $query->set('posts_per_page', -1);// 不分页
   }
 }
@@ -322,7 +322,7 @@ function showComments($comment, $args, $depth) {
       
       <div class="comment-text">
         <?php if ($comment->comment_approved == '0') : ?>
-        <span>你的评论正在审核中！</span>
+        <span>你发表的评论正在审核中！</span>
         <?php endif; ?><?php comment_text(); ?>
       </div>
     </div>
@@ -348,17 +348,19 @@ function comment_mail_notify($comment_id) {
   if ($parent_id != '' && $spam_confirmed != 'spam' && $notify == '1') {
     $wp_email = 'no-reply@' . preg_replace('#^www.#', '', strtolower($_SERVER['SERVER_NAME']));// email 发出点，no-reply 可改为可用的 email
     $to = trim(get_comment($parent_id)->comment_author_email);
-    $subject = '您在【' . get_option('blogname') . '】的留言有了回复';
-    $message = '<div style="width:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;font-size:16px;line-height:24px;color:#333;background:#f2f2f2;">
-      <div style="width:80%;margin:0 auto;padding:16px;background:#fff;">
-        <p>' . trim(get_comment($parent_id)->comment_author) . ', 您好！</p>
-        <p>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言：<br>'
-        . trim( get_comment( $parent_id )->comment_content ) . '</p>
-        <p>' . trim($comment->comment_author) . ' 给您的回复：<br />'
-        . trim($comment->comment_content) . '<br /></p>
-        <p>您可以点击查看回复的完整內容</p>
-        <p>还要再度光临 ' . get_option('blogname') . '</p>
-        <p>(此邮件由系统自动发送，请勿回复。)</p>
+    $subject = '[' . get_option('blogname') . '] 你在《' . get_the_title($comment->comment_post_ID) . '》的评论有了新回复';
+    $message = '<div style="width:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;background:#f2f2f2;">
+      <div style="margin:0 auto;padding:16px;width:80%;background:#fff;">
+        <div style="font-size:16px;line-height:1.5;color:#333;">
+          <p>' . trim(get_comment($parent_id)->comment_author) . '，你好！你在《' . get_the_title($comment->comment_post_ID) . '》的评论有了新回复：</p>
+          <p>你的评论：<span style="color:#666;">'
+          . trim(get_comment($parent_id)->comment_content) . '</span></p>
+          <p>' . trim($comment->comment_author) . '给你的回复：<span style="color:#666;">' . trim($comment->comment_content) . '</span></p>
+        </div>
+        <div style="margin-top:64px;font-size:12px;line-height:1.5;color:#999;">
+          <p>此信为系统邮件，请不要直接回复。</p>
+          <p>&copy; ' . date('Y') . bloginfo('name') . '</p>
+        </div>
       </div>
     </div>';
     $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
@@ -387,7 +389,7 @@ function recent_comments($no_comments = 10, $comment_len = 88) {
     $comm .= get_comment_author($comment->comment_ID) . '</a>';
     $comm .= '<p>' . mb_strimwidth(strip_tags(apply_filters('get_comment_text', $comment->comment_content)), 0, $comment_len, "…" ) . '</p></div></li>';
   endforeach; else :
-    $comm .= '暂无近期评论！';
+    $comm .= '还没有近期评论。';
   endif;
   echo $comm;
 }

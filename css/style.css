@@ -5,7 +5,7 @@ Theme URI: https://github.com/bizhongbio/bizhongbio
 Author: Bizhong Lan
 Author URI: https://bizhong.github.io/
 Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-Version: 2.0.3
+Version: 2.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
@@ -217,7 +217,6 @@ body {
 .header-content,
 .slide-content,
 .hero-error-content,
-#articles,
 .content,
 .footer-content {
   margin: 0 auto;
@@ -307,15 +306,17 @@ body {
 .cat-nav li.current-menu-item a,
 .slide-work h3,
 .slide-video h3,
-.article:hover h2 a,
+.article figure:hover h2 a,
 .headline h2 strong,
 .post h2 a:hover,
-.post span a:hover,
 .post span:nth-child(3):hover i,
 .post span:nth-child(5):hover i,
+.post span a:hover,
 .post p a,
 .recommended-posts li:hover a,
 .recent-comments li:hover a,
+.article-header span:nth-child(4):hover i,
+.article-header span:nth-child(6):hover i,
 .article-header span a:hover,
 .link li a:hover,
 .copyright p a:hover {
@@ -599,16 +600,9 @@ a.current {
   *zoom: 1;
 }
 #articles {
-  overflow-x: hidden;
-  padding: 32px 0;
-}
-.content,
-.footer-content {
-  padding: 16px 0;
-}
-.articles,
-.related-articles {
-  margin: -8px;
+  margin: 0 auto;
+  padding: 24px 0;
+  width: 1024px;
 }
 .article {
   float: left;
@@ -704,6 +698,10 @@ a.current {
   display: none;
   font-size: 2em;
 }
+.content,
+.footer-content {
+  padding: 16px 0;
+}
 .posts,
 #article {
   float: right;
@@ -713,20 +711,21 @@ a.current {
   float: right;
   width: 288px;
 }
-.headline,
-.post {
+.headline {
   margin-bottom: 16px;
+  padding: 10px 16px;
   word-wrap: break-word;
   word-break: break-all;
   background: #fff;
 }
-.headline {
-  padding: 8px 16px;
+.post {
+  margin-top: 16px;
+  word-wrap: break-word;
+  word-break: break-all;
+  background: #fff;
 }
-.post,
-.article-header,
-.article-copyright {
-  padding: 16px;
+.post:first-child {
+  margin-top: 0;
 }
 .post h2 {
   margin-bottom: 8px;
@@ -767,6 +766,10 @@ a.current {
 #article a:hover,
 .about p a:hover {
   text-decoration: underline;
+}
+.article-header,
+.article-copyright {
+  padding: 16px;
 }
 .article-header h1 {
   margin-bottom: 16px;
@@ -850,6 +853,12 @@ padding-left: 16px;
   border-top: 16px solid #f2f2f2;
   padding: 0 16px 16px;
 }
+.related-articles {
+  margin: -8px;
+}
+.related-articles p {
+  margin: 20px 8px 8px;
+}
 .related-article {
   position: relative;
   float: left;
@@ -862,17 +871,16 @@ padding-left: 16px;
   right: 8px;
   bottom: 8px;
   left: 8px;
-  padding: 8px 0;
+  padding-top: 8px;
   background: #fff;
 }
-.related-article figcaption a {
+.related-article figcaption a,
+.recommended-posts li a {
   overflow: hidden;
   text-align: center;
   white-space: nowrap;
-  text-overflow: clip;
-}
-.related-articles p {
-  margin: 20px 8px 8px;
+  text-overflow: ellipsis;
+  word-break: keep-all;
 }
 .prompt p {
   margin: 0;
@@ -910,8 +918,7 @@ padding-left: 16px;
   font-size: .875em;
   color: #d0d4d8;
 }
-.comment-text,
-.recommended-posts a {
+.comment-text {
   color: #666;
 }
 .commentform {
@@ -1001,11 +1008,12 @@ padding-left: 16px;
   padding: 4px 0;
   color: #0fae6f;
 }
-.recommended-posts span a {
-  float: right;
-  font-size: .875em;
-  line-height: 1.14286;
-  color: #999;
+.recommended-posts li a {
+  display: inline-block;
+  color: #666;
+}
+.recent-comments {
+  margin: 0 16px 0 0;
 }
 .recent-comments li {
   padding: 8px 0;
@@ -1051,12 +1059,12 @@ padding-left: 16px;
   text-align: center;
   color: #666;
 }
-.aboutme {
+.avatar {
   margin-top: 48px;
   padding: 48px 0;
   background: #0fae6f;
 }
-.aboutme img {
+.avatar img {
   display: block;
   margin: 0 auto;
   width: 240px;
@@ -1087,16 +1095,16 @@ padding-left: 16px;
 .link {
   margin-bottom: 16px;
   border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
   width: 100%;
 }
 .link h2 {
-  padding-right: 12px;
+  padding-right: 16px;
   font-size: 1em;
   color: #000;
 }
 .link li a {
-  padding-right: 12px;
+  margin-right: 12px;
   font-size: .875em;
   line-height: 1;
   color: #999;
@@ -1137,7 +1145,7 @@ padding-left: 16px;
   }
   .header-content,
   .slide-content,
-  #articles,
+  .hero-error-content,
   .content,
   .footer-content {
     width: 1184px;
@@ -1165,9 +1173,16 @@ padding-left: 16px;
   #hero-slides {
     height: 666px;
   }
+  #articles {
+    width: 1200px;
+  }
   .posts,
   #article {
     width: 832px;
+  }
+  .related-article {
+    padding-bottom: 20%;
+    width: 20%;
   }
   .sidebar {
     width: 352px;
@@ -1183,10 +1198,10 @@ padding-left: 16px;
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .header-content,
   .slide-content,
-  #articles,
+  .hero-error-content,
   .content,
   .footer-content {
-    max-width: 736px;
+    width: 736px;
   }
   #btn-search {
     display: block;
@@ -1203,7 +1218,7 @@ padding-left: 16px;
     z-index: 8;
     margin: 0 auto;
     border: 0;
-    max-width: 736px;
+    width: 736px;
     background: #000;
   }
   #cat-header #searchform {
@@ -1217,6 +1232,21 @@ padding-left: 16px;
   }
   #hero-slides {
     height: 468px;
+  }
+  .hero-error {
+    height: 736px;
+  }
+  .hero-error-content {
+    height: calc(100% - 24px);
+    background-position: bottom center;
+  }
+  .hero-error-content h2 {
+    top: 24px;
+    margin-top: 0;
+  }
+  #articles {
+    padding: 16px 0;
+    width: 752px;
   }
   .article {
     padding-bottom: 33.333333%;
@@ -1239,6 +1269,7 @@ padding-left: 16px;
 @media screen and (min-width: 415px) and (max-width: 767px) {
   .header-content,
   .slide-content,
+  .hero-error-content,
   #articles,
   .content,
   .footer-content {
@@ -1306,17 +1337,37 @@ padding-left: 16px;
   .slide-project .slide-content {
     margin: 0 16px;
   }
-  #articles,
-  .footer-content {
-    padding: 16px;
+  .hero-error {
+    height: 520px;
+  }
+  .hero-error-content {
+    height: calc(100% - 16px);
+    background-position: bottom center;
+    background-size: 65% auto;
+  }
+  .hero-error-content h2 {
+    top: 16px;
+    left: 16px;
+    margin-top: 0;
+  }
+  #articles {
+    padding: 16px 8px;
   }
   .article {
     padding-bottom: 50%;
     width: 50%;
   }
+  .load-more,
+  .footer-content {
+    padding: 16px;
+  }
   .posts,
   #article {
     width: 100%;
+  }
+  .related-article {
+    padding-bottom: 33.333333%;
+    width: 33.333333%;
   }
   .link h2 {
     margin-bottom: 8px;
@@ -1331,6 +1382,7 @@ padding-left: 16px;
 @media screen and (max-width: 414px) {
   .header-content,
   .slide-content,
+  .hero-error-content,
   #articles,
   .content,
   .footer-content {
@@ -1399,18 +1451,32 @@ padding-left: 16px;
   #hero-slides {
     height: 369px;
   }
-  #articles,
-  .load-more {
+  .hero-error {
+    height: 468px;
+  }
+  .hero-error-content {
+    height: calc(100% - 16px);
+    background-position: bottom center;
+    background-size: calc(100% - 32px) auto;
+  }
+  .hero-error-content h2 {
+    top: 16px;
+    left: 16px;
+    margin-top: 0;
+  }
+  #articles {
     padding: 16px 0;
   }
-  .articles,
-  .article figure {
-    margin: 0;
-  }
   .article {
-    margin-bottom: 16px;
+    margin-top: 16px;
     padding-bottom: 100%;
     width: 100%;
+  }
+  .article:first-child {
+    margin-top: 0;
+  }
+  .article figure {
+    margin: 0;
   }
   .article h2 {
     font-size: 1.5em;
@@ -1419,6 +1485,10 @@ padding-left: 16px;
     right: 0;
     bottom: 0;
     left: 0;
+    padding: 16px;
+  }
+  .load-more,
+  .footer-content {
     padding: 16px;
   }
   .posts,
@@ -1434,9 +1504,6 @@ padding-left: 16px;
   }
   #comment {
     height: 114px;
-  }
-  .footer-content {
-    padding: 16px;
   }
   .copyright {
     font-size: .8125em;
