@@ -676,7 +676,7 @@ a.current {
 }
 .article figure:hover,
 .post:hover,
-##go-top:hover {
+#go-top:hover {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
   -ms-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
@@ -1124,8 +1124,8 @@ a.current {
 #go-top {
   display: none;
   position: fixed;
-  right: 51px;
-  bottom: 51px;
+  right: 54px;
+  bottom: 54px;
   z-index: 5;
   width: 40px;
   height: 40px;
