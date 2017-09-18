@@ -5,7 +5,7 @@ Theme URI: https://github.com/bizhongbio/bizhongbio
 Author: Bizhong Lan
 Author URI: https://bizhong.github.io/
 Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-Version: 2.1.1
+Version: 2.1.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
@@ -238,8 +238,6 @@ body {
 .menu-cat-nav-container,
 .cat-nav ul,
 .cat-nav ul li,
-.link h2,
-.link ul,
 .link li {
   float: left;
 }
@@ -269,11 +267,11 @@ body {
 }
 #header #menu-nav,
 #menu-cat-nav {
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
-  -ms-transition: all .3s ease-in-out;
-  -o-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  -webkit-transition: height .3s ease-in-out;
+  -moz-transition: height .3s ease-in-out;
+  -ms-transition: height .3s ease-in-out;
+  -o-transition: height .3s ease-in-out;
+  transition: height .3s ease-in-out;
 }
 #header.show-nav #menu-nav,
 #cat-header.show-nav #menu-cat-nav {
@@ -677,7 +675,8 @@ a.current {
   color: #999;
 }
 .article figure:hover,
-.post:hover {
+.post:hover,
+##go-top:hover {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
   -ms-box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
@@ -686,12 +685,13 @@ a.current {
 }
 .load-more {
   float: left;
-  padding: 32px 0;
+  margin-top: 8px;
   width: 100%;
+  text-align: center;
 }
 .load-more a {
-  display: block;
-  text-align: center;
+  display: inline-block;
+  padding: 16px 32px;
   color: #0fae6f;
 }
 .load-more a i {
@@ -720,6 +720,7 @@ a.current {
 }
 .post {
   margin-top: 16px;
+  padding: 16px;
   word-wrap: break-word;
   word-break: break-all;
   background: #fff;
@@ -830,7 +831,7 @@ a.current {
   color: #000;
 }
 .article-content ul {
-padding-left: 16px;
+  padding-left: 16px;
 }
 .article-content ul li {
   list-style: disc outside none;
@@ -857,7 +858,7 @@ padding-left: 16px;
   margin: -8px;
 }
 .related-articles p {
-  margin: 20px 8px 8px;
+  margin: 8px;
 }
 .related-article {
   position: relative;
@@ -926,7 +927,7 @@ padding-left: 16px;
   padding-bottom: 42px;
 }
 .commentform p {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .commentform input,
 .commentform textarea {
@@ -1003,14 +1004,21 @@ padding-left: 16px;
   font-size: 1.25em;
   color: #333;
 }
-.recommended-posts li {
-  list-style: decimal-leading-zero inside none;
-  padding: 4px 0;
-  color: #0fae6f;
-}
 .recommended-posts li a {
-  display: inline-block;
+  display: block;
+  padding-left: 10px;
+  line-height: 1.5;
+  text-align: left;
   color: #666;
+}
+.recommended-posts li a:before {
+  position: absolute;
+  margin: 10px 0 0 -10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #0fae6f;
+  content: "";
 }
 .recent-comments {
   margin: 0 16px 0 0;
@@ -1098,20 +1106,16 @@ padding-left: 16px;
   padding-bottom: 16px;
   width: 100%;
 }
-.link h2 {
-  padding-right: 16px;
-  font-size: 1em;
-  color: #000;
-}
 .link li a {
-  margin-right: 12px;
+  margin-right: 16px;
   font-size: .875em;
-  line-height: 1;
+  line-height: 1.5;
   color: #999;
 }
 .copyright {
   width: 100%;
   font-size: .875em;
+  line-height: 1.5;
   color: #999;
 }
 .copyright p {
@@ -1120,8 +1124,8 @@ padding-left: 16px;
 #go-top {
   display: none;
   position: fixed;
-  right: 46px;
-  bottom: 46px;
+  right: 51px;
+  bottom: 51px;
   z-index: 5;
   width: 40px;
   height: 40px;
@@ -1256,12 +1260,6 @@ padding-left: 16px;
   #article {
     width: 100%;
   }
-  .link h2 {
-    margin-bottom: 8px;
-  }
-  .link li a {
-    line-height: 1.5;
-  }
   #go-top {
     right: 16px;
   }
@@ -1286,9 +1284,10 @@ padding-left: 16px;
   }
   .logo {
     position: absolute;
-    left: 50%;
+    right: 72px;
+    left: 72px;
     z-index: 7;
-    margin-left: -83.91px;
+    text-align: center;
   }
   #header #menu-nav,
   #menu-cat-nav {
@@ -1357,9 +1356,8 @@ padding-left: 16px;
     padding-bottom: 50%;
     width: 50%;
   }
-  .load-more,
-  .footer-content {
-    padding: 16px;
+  .load-more a {
+    padding: 8px 16px;
   }
   .posts,
   #article {
@@ -1369,11 +1367,8 @@ padding-left: 16px;
     padding-bottom: 33.333333%;
     width: 33.333333%;
   }
-  .link h2 {
-    margin-bottom: 8px;
-  }
-  .link li a {
-    line-height: 1.5;
+  .footer-content {
+    padding: 16px;
   }
   #go-top {
     right: 16px;
@@ -1399,9 +1394,10 @@ padding-left: 16px;
   }
   .logo {
     position: absolute;
-    left: 50%;
+    right: 72px;
+    left: 72px;
     z-index: 7;
-    margin-left: -83.91px;
+    text-align: center;
   }
   #header #menu-nav,
   #menu-cat-nav {
@@ -1487,9 +1483,8 @@ padding-left: 16px;
     left: 0;
     padding: 16px;
   }
-  .load-more,
-  .footer-content {
-    padding: 16px;
+  .load-more a {
+    padding: 8px 16px;
   }
   .posts,
   #article {
@@ -1504,6 +1499,9 @@ padding-left: 16px;
   }
   #comment {
     height: 114px;
+  }
+  .footer-content {
+    padding: 16px;
   }
   .copyright {
     font-size: .8125em;

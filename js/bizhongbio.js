@@ -1,18 +1,3 @@
-/*
-Theme Name: Bizhongbio
-Theme URI: https://github.com/bizhongbio/bizhongbio
-Author: Bizhong Lan
-Author URI: https://bizhong.github.io/
-Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-Version: 2.1.1
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
-Text Domain: bizhongbio
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-*/
 $(function() {
   switch ($(document.body).attr('id')) {// 页面名称
     case 'home':// 首页

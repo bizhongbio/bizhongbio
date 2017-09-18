@@ -12,14 +12,15 @@
               $query_posts->query($args);
               while ($query_posts->have_posts()) : $query_posts->the_post();
             ?>
+            
+              <li><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+            <?php endwhile; wp_reset_query(); ?>
 
-              <li>
-                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-              </li><?php endwhile; wp_reset_query(); ?>
             </ul>
           </section>
           <section class="recent-comments">
             <h2>近期评论</h2>
             <?php recent_comments(); ?>
+
           </section>
         </aside>

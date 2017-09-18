@@ -42,7 +42,7 @@
           </a>
         </section>
         <nav class="slides-nav">
-          <a href="#intro" class="current"></a>
+          <a href="#introduction" class="current"></a>
           <a href="#project"></a>
           <a href="#work"></a>
           <a href="#video"></a>

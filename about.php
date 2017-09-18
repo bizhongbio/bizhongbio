@@ -13,7 +13,7 @@ Template Name: 关于
           <p><?php bloginfo('description'); ?></p>
           <!-- 在这里修改图片，尺寸：240 x 240（一倍图）或 480 x 480（二倍图） -->
           <div class="avatar">
-            <img src="<?php bloginfo('url'); ?>/images/about-avatar.svg" alt="<?php bloginfo('name'); ?>">
+            <img src="<?php bloginfo('template_url'); ?>/images/about-avatar.svg" alt="<?php bloginfo('name'); ?>">
           </div>
           <!-- 在这里修改社交媒体 -->
           <div class="social">

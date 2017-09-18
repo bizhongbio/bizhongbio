@@ -10,7 +10,7 @@
             <span><i class="fa fa-commenting"></i><?php comments_popup_link('0', '1', '%'); ?></span>
           </article>
           <?php endwhile; ?><div class="load-more">
-            <?php next_posts_link('<i class="fa fa-circle-o-notch fa-pulse"></i>', 0); ?>
+            <?php next_posts_link('<i class="fa fa-spinner fa-pulse"></i>', 0); ?>
             
           </div>
           <?php else : ?><article class="post">

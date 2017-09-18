@@ -299,13 +299,13 @@ function articleAdjacent() {
     previous_post_link('上一篇: %link', '%title', true);
     echo '<br/>';
   } else {
-    echo '<p>这一刻，一只鱼已经游到下游了</p>';
+    echo '<p>这一刻，一只鱼已经游到下游了。</p>';
   }
   if (get_next_post($categoryIDS)) {
     next_post_link('下一篇: %link', '%title', true);
     echo '<br/>';
   } else {
-    echo '<p>这一刻，另一只鱼已经游到上游了</p>';
+    echo '<p>这一刻，另一只鱼已经游到上游了。</p>';
   }
 }
 
