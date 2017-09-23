@@ -78,11 +78,7 @@
 		<header id="cat-header" role="banner">
 			<div class="header-content">
 				<a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
-			<?php if (is_single()) : ?>
-				<div class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
-			<?php else : ?>
 				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-			<?php endif; ?>
 				<nav class="cat-nav" aria-label="Local navigation" role="navigation">
 					<?php wp_nav_menu(array('menu' => 'cat-nav', 'depth' => 1)); ?>
 					
