@@ -10,7 +10,7 @@
 
 Bizhongbio 是一个免费、简约、响应式的 WordPress 博客主题。
 
-![首页][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/screenshot_home-slides.png]
+![首页](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/screenshot_home-slides.png)
 
 ## 环境准备
 
@@ -31,7 +31,7 @@ _文章 -> 分类目录_
 
 添加分类目录，形如：
 
-![分类目录][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/edit-tags_category.png]
+![分类目录](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/edit-tags_category.png)
 
 ### 菜单
 
@@ -39,11 +39,11 @@ _外观 -> 菜单_
 
 添加主菜单（菜单名称：**nav**），形如：
 
-![主菜单][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/nav-menus_nav.png]
+![主菜单](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/nav-menus_nav.png)
 
 添加文章分类目录菜单（菜单名称：**cat-nav**），形如：
 
-![文章分类目录菜单][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/nav-menus_cat-nav.png]
+![文章分类目录菜单](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/nav-menus_cat-nav.png)
 
 **注意**：主菜单名称必须为“nav”，文章分类目录菜单名称必须为“cat-nav”。
 
@@ -61,7 +61,7 @@ _设置 -> 常规_
 
 添加站点标题、副标题、WordPress 地址（URL）、站点地址（URL）、电子邮件地址，形如：
 
-![常规][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/options-general.png]
+![常规](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/options-general.png)
 
 ### 撰写
 
@@ -84,7 +84,7 @@ http://ping.blog.qikoo.com/rpc2.php
 
 _设置 -> 多媒体_
 
-![多媒体][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/options-media.png]
+![多媒体](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/options-media.png)
 
 ### 固定链接
 
@@ -96,53 +96,52 @@ _设置 -> 固定链接_
 
 _设置 -> Baidu-Sitemap_
 
-[WordPress 百度网站地图生成插件：Baidu Sitemap Generator](https://www.wpdaxue.com/baidu-sitemap-generator.html)
+教程：[WordPress 百度网站地图生成插件：Baidu Sitemap Generator](https://www.wpdaxue.com/baidu-sitemap-generator.html)
 
 ### Crayon
 
 _设置 -> Crayon_
 
-[WordPress 代码高亮最强插件 Crayon Syntax Highlighter](http://www.511yj.com/wordpress-crayon-syntax.html)
+教程：[WordPress 代码高亮最强插件 Crayon Syntax Highlighter](http://www.511yj.com/wordpress-crayon-syntax.html)
 
-- XML-Sitemap
+### XML-Sitemap
 
 _设置 -> XML-Sitemap_
 
-[WordPress GoogLe 网站地图生成插件：Google XML Sitemaps](https://www.wpdaxue.com/google-xml-sitemaps.html)
+教程：[WordPress GoogLe 网站地图生成插件：Google XML Sitemaps](https://www.wpdaxue.com/google-xml-sitemaps.html)
 
 ## 常见问题解答
 
-### 我该如何修改网站描述（`<meta name="description" content="...">`）？
+### 我该如何修改网站描述（`<meta name="description" content="⋯⋯">`）？
 
-> 找到**模版函数（functions.php）**文件，在第**76~112**行修改。
+> 找到模版函数（functions.php）文件，在第 76～112 行修改。
 
-### 我该如何修改网站关键字（`<meta name="keywords" content="...">`）？
+### 我该如何修改网站关键字（`<meta name="keywords" content="⋯⋯">`）？
 
-> 找到**模版函数（functions.php）**文件，在第**115~157**行修改。
+> 找到模版函数（functions.php）文件，在第 115～157 行修改。
 
 ### 我该如何修改侧边栏的 GitHub 地址？
 
-> 找到**边栏（sidebar.php）**文件，在第**4**行修改。
+> 找到边栏（sidebar.php）文件，在第 4 行修改。
 
 ### 我该如何修改关于页面的标题、段落、图片和社交媒体？
 
-> 找到**关于页面模板（about.php）**文件，在第**9~25**行修改。
+> 找到关于页面模板（about.php）文件，在第 9～25 行修改。
 
 ### 我该如何添加底部的友情链接？
 
-> 找到**主题页脚（footer.php）**文件，在第**6**行添加。
+> 找到主题页脚（footer.php）文件，在第 6 行添加。
 
 ### 我该如何优化 Crayon Syntax Highlighter 插件（按需加载）？
 
 > [WordPress 高亮插件：Crayon Syntax Highlighter 加载优化](https://zhangge.net/4834.html)
-
-> 按照教程，找到**模版函数（functions.php）**文件，在第**278~287**行替换**按需加载 Crayon Syntax Highlighter 插件**函数。
+> 按照教程，找到模版函数（functions.php）文件，在第 278～287 行替换按需加载 Crayon Syntax Highlighter 插件函数。
 
 ### 我在撰写新文章时需要注意什么？
 
 > 特色图片，默认尺寸：414 x 414（正方形尺寸）。
 
-以上还不能解答您的问题或您有建议的话，提个 [Issue](https://github.com/bizhongbio/bizhongbio/issues) 给我！
+以上还不能解答您的问题或您有建议的话，提交一个 [issue](https://github.com/bizhongbio/bizhongbio/issues) 给我！
 
 ## 版本说明
 
@@ -257,4 +256,4 @@ _2016-12-15_
 
 如果 Bizhongbio 主题对您有帮助，欢迎 Star 或打赏 ￥6.66（记得“添加留言”）。您的支持将鼓励我继续更新！
 
-![微信支付][https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/weixin_pay.png]
+![微信支付](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/weixin_pay.png)
