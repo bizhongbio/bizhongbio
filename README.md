@@ -27,7 +27,7 @@ WordPress 新手入门指南，包括 WordPress 简介、安装、后台功能�
 
 ### 分类目录
 
-_文章 -> 分类目录_
+_文章 ▸ 分类目录_
 
 添加分类目录，形如：
 
@@ -35,7 +35,7 @@ _文章 -> 分类目录_
 
 ### 菜单
 
-_外观 -> 菜单_
+_外观 ▸ 菜单_
 
 添加主菜单（菜单名称：**nav**），形如：
 
@@ -49,7 +49,7 @@ _外观 -> 菜单_
 
 ### 安装插件
 
-_插件 -> 安装插件_
+_插件 ▸ 安装插件_
 
 - Crayon Syntax Highlighter（代码高亮）
 - Baidu Sitemap Generator（百度网站地图）
@@ -57,7 +57,7 @@ _插件 -> 安装插件_
 
 ### 常规
 
-_设置 -> 常规_
+_设置 ▸ 常规_
 
 添加站点标题、副标题、WordPress 地址（URL）、站点地址（URL）、电子邮件地址，形如：
 
@@ -65,7 +65,7 @@ _设置 -> 常规_
 
 ### 撰写
 
-_设置 -> 撰写_
+_设置 ▸ 撰写_
 
 更新服务中添加以下服务 URL：
 
@@ -82,31 +82,31 @@ http://ping.blog.qikoo.com/rpc2.php
 
 ### 多媒体
 
-_设置 -> 多媒体_
+_设置 ▸ 多媒体_
 
 ![多媒体](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/options-media.png)
 
 ### 固定链接
 
-_设置 -> 固定链接_
+_设置 ▸ 固定链接_
 
 建议勾选“自定义结构”，设置为 `/%postname%.html`（文章别名） 或 `/%category%/%postname%.html`（分类名/文章别名）。
 
 ### Baidu-Sitemap
 
-_设置 -> Baidu-Sitemap_
+_设置 ▸ Baidu-Sitemap_
 
 教程：[WordPress 百度网站地图生成插件：Baidu Sitemap Generator](https://www.wpdaxue.com/baidu-sitemap-generator.html)
 
 ### Crayon
 
-_设置 -> Crayon_
+_设置 ▸ Crayon_
 
 教程：[WordPress 代码高亮最强插件 Crayon Syntax Highlighter](http://www.511yj.com/wordpress-crayon-syntax.html)
 
 ### XML-Sitemap
 
-_设置 -> XML-Sitemap_
+_设置 ▸ XML-Sitemap_
 
 教程：[WordPress GoogLe 网站地图生成插件：Google XML Sitemaps](https://www.wpdaxue.com/google-xml-sitemaps.html)
 
@@ -134,7 +134,7 @@ _设置 -> XML-Sitemap_
 
 ### 我该如何优化 Crayon Syntax Highlighter 插件（按需加载）？
 
-> [WordPress 高亮插件：Crayon Syntax Highlighter 加载优化](https://zhangge.net/4834.html)
+> [WordPress 高亮插件：Crayon Syntax Highlighter 加载优化](https://zhangge.net/4834.html)  
 > 按照教程，找到模版函数（functions.php）文件，在第 278～287 行替换按需加载 Crayon Syntax Highlighter 插件函数。
 
 ### 我在撰写新文章时需要注意什么？
@@ -151,7 +151,7 @@ _2017-9-23_
 
 - 使用百度静态资源公共库加载 Font Awesome、jQuery、HTML5 Shiv、Respond.js
 - 修改首页文章、相关文章样式
-- 修改特色图片默认大小（`full` => `414, 414, false`）
+- 修改特色图片默认大小（`full` -> `414, 414, false`）
 - 修改发送邮件模板，即 comment_mail_notify 函数
 - 移除按需加载 Crayon Syntax Highlighter 插件函数
 - 更新图片 screenshot.jpg、default.jpg
@@ -239,7 +239,7 @@ _2016-12-23_
 _2016-12-22_
 
 - 修改引用外部脚本文件地址、友情链接地址、主题地址、GitHub 链接 `title`
-- 重命名文件夹（scripts => js）
+- 重命名文件夹（scripts -> js）
 - 更新 [jQuery](http://jquery.com/download/) 版本到 v3.1.1
 - 更新 [Respond.js](https://github.com/scottjehl/Respond) 版本到 v1.4.2
 - 更新 [HTML5 Shiv](https://github.com/aFarkas/html5shiv) 版本到 v3.7.3
