@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title><?php headTitle(); ?></title>
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<link rel="dns-prefetch" href="http://apps.bdimg.com/">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
 		<meta http-equiv="Cache-Control" content="no-transform">
 		<meta http-equiv="Cache-Control" content="no-siteapp">
@@ -10,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="description" content="<?php headDescription(); ?>">
 		<meta name="keywords" content="<?php headKeywords(); ?>">
-		<meta name="author" content="兰必钟, https://bizhong.github.io/">
+		<meta name="author" content="兰必钟(Lan Bizhong), https://bizhong.github.io/">
 		<meta name="robots" content="index, follow">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?>">
@@ -35,7 +37,7 @@
 		<meta itemprop="name" content="<?php headTitle(); ?>">
 		<meta itemprop="description" content="<?php headDescription(); ?>">
 		<meta itemprop="image" content="<?php bloginfo('template_url'); ?>/screenshot.jpg">
-		<link rel="fluid-icon" href="<?php bloginfo('template_url'); ?>/images/fluid-icon-512x512.png" title="双鱼bizhongbio">
+		<link rel="fluid-icon" href="<?php bloginfo('template_url'); ?>/images/fluid-icon-512x512.png" title="<?php bloginfo('name'); ?>">
 		<link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/images/apple-touch-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="<?php bloginfo('template_url'); ?>/images/apple-touch-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_url'); ?>/images/apple-touch-icon-72x72.png">
@@ -52,12 +54,12 @@
 		<link rel="icon" sizes="16x16" href="<?php bloginfo('template_url'); ?>/images/favicon-16x16.png">
 		<link rel="manifest" href="<?php bloginfo('template_url'); ?>/images/manifest.json">
 		<link rel="mask-icon" href="<?php bloginfo('template_url'); ?>/images/safari-pinned-tab.svg" color="#000000">
-		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 		<link rel="canonical" href="<?php headUrl(); ?>">
 		<!--[if lte IE 9]>
-			<script src="<?php bloginfo('template_url'); ?>/js/lib/html5shiv.min.js"></script>
-			<script src="<?php bloginfo('template_url'); ?>/js/lib/respond.min.js"></script>
+			<script src="http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js"></script>
+			<script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<?php wp_head(); ?>
 
@@ -83,7 +85,7 @@
 			<?php endif; ?>
 				<nav class="cat-nav" aria-label="Local navigation" role="navigation">
 					<?php wp_nav_menu(array('menu' => 'cat-nav', 'depth' => 1)); ?>
-
+					
 				</nav>
 <?php else : ?>
 		<header id="header" role="banner"<?php if (is_home()) echo ' style="position: absolute; background: rgba(0, 0, 0, .8);"'; ?>>
@@ -102,3 +104,4 @@
 				</form>
 			</div>
 		</header>
+		

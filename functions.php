@@ -1,5 +1,5 @@
 <?php
-// 完整的 WordPress 头部清理代码
+// 移除头部
 // remove_action('wp_head', 'wp_enqueue_scripts', 1);
 remove_action('wp_head', 'feed_links', 2);
 remove_action('wp_head', 'feed_links_extra', 3);
@@ -26,7 +26,7 @@ function my_remove_recent_comments_style() {
   remove_action('wp_head', array($wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ], 'recent_comments_style'));
 }
 
-// 移除 WordPress 4.2 网站自动加载的 Emoji 脚本
+// 移除自动加载的 Emoji 脚本
 function disable_emojis() {
   remove_action('wp_head', 'print_emoji_detection_script', 7);
   remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -48,7 +48,7 @@ function disable_emojis_tinymce($plugins) {
   }
 }
 
-// 启用控制面板 sidebar 侧边栏功能
+// 启用边栏功能
 if (function_exists('register_sidebar')) {
   register_sidebar(array(
     'before_widget' => '',
@@ -58,21 +58,21 @@ if (function_exists('register_sidebar')) {
   ));
 }
 
-// 恢复 WordPress 3.5 控制面板友情链接管理功能
+// 启用友情链接管理功能
 add_filter('pre_option_link_manager_enabled', '__return_true');
 
-// 启用控制面板特色图片功能
+// 启用特色图片功能
 if (function_exists('add_theme_support')) {
   add_theme_support('post-thumbnails', array('post', 'page'));
-  set_post_thumbnail_size('full');// 完整尺寸
+  set_post_thumbnail_size(414, 414, false);// 尺寸大小：414 x 414
 }
 
-// 自定义设置网站标题 title
+// 设置网站标题 title
 function headTitle() {
   echo is_home() ? get_bloginfo('name') . ' - ' . get_bloginfo('description') : wp_title('|', false, 'right') . get_bloginfo('name') . ' - ' . get_bloginfo('description');
 }
 
-// 自定义设置网站描述 description
+// 设置网站描述 description
 function headDescription() {
   if (is_single()) {// 文章页面
     $description = '';
@@ -111,7 +111,7 @@ function headDescription() {
   }
 }
 
-// 自定义设置网站关键字 keywords
+// 设置网站关键字 keywords
 function headKeywords() {
   if (is_single()) {// 文章页面
     $keywords = '';
@@ -156,7 +156,7 @@ function headKeywords() {
   }
 }
 
-// 自定义设置网站 URL
+// 设置网站 URL
 function headUrl($output = '') {
   if (is_home()) {// 首页
     $output = home_url();
@@ -181,7 +181,7 @@ function headUrl($output = '') {
   }
 }
 
-// 自定义设置网站 body id
+// 设置网站 body id
 function bodyId() {
   if (is_home()) {// 首页
     echo 'home';
@@ -213,7 +213,7 @@ function my_css_attributes_filter($var) {
   return is_array($var) ? array_intersect($var, array('current-menu-item', 'current-post-ancestor', 'current-menu-ancestor', 'current-menu-parent')) : '';
 }
 
-// 自定义设置页面分页文章数
+// 设置文章分页数
 function custom_posts_per_page($query) {
   if (is_home()) {// 首页
     $query->set('posts_per_page', 24);
@@ -226,7 +226,7 @@ function custom_posts_per_page($query) {
 
 add_action('pre_get_posts', 'custom_posts_per_page');
 
-// 自定义设置缩略图
+// 设置缩略图
 function post_thumbnail() {
   global $post;
   if (has_post_thumbnail()) {// 有特色图片则取特色图片
@@ -240,7 +240,7 @@ function post_thumbnail() {
     preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $post->post_content, $matches, PREG_PATTERN_ORDER);
     $first_img = $matches[1][0];// 没有设置特色图片则取文章第一张图片
     if (empty($first_img)) {// 既没有设置特色图片、文章内又没有图片，则取默认图像
-      $first_img = get_bloginfo('template_url') . '/images/sorry.jpg';
+      $first_img = get_bloginfo('template_url') . '/images/default.jpg';
     }
     echo '<img src="' . $first_img . '" alt="' . trim(strip_tags($post->post_title)) . '">';
   }
@@ -272,22 +272,22 @@ function setPostViews($postID) {
   }
 }
 
-// 文章内容的 URL 自动生成超链接
+// 文章内容 URL 自动生成超链接
 add_filter('the_content', 'make_clickable');
 
 // 按需加载 Crayon Syntax Highlighter 插件
-function Crayon_Resources($content) {
-  $pre = "/(crayon-|<\/pre>)/i";
-  if (preg_match_all($pre, $content, $matches) && is_single()) {
-    $content .= '<link rel="stylesheet" id="crayon-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=2.7.1" type="text/css" media="all"><link rel="stylesheet" id="crayon-theme-familiar-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/themes/familiar/familiar.css?ver=2.7.1" type="text/css" media="all"><link rel="stylesheet" id="crayon-font-monaco-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.7.1" type="text/css" media="all"><script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script><script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script><script type="text/javascript">/* <![CDATA[ */var CrayonSyntaxSettings = {"version":"2.7.1","is_admin":"0","ajaxurl":"http:\/\/www.bizhongbio.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};/* ]]> */</script><script type="text/javascript" src="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=2.7.1"></script>';
-  }
-  return $content;
-}
+// function Crayon_Resources($content) {
+//   $pre = "/(crayon-|<\/pre>)/i";
+//   if (preg_match_all($pre, $content, $matches) && is_single()) {
+//     $content .= '<link rel="stylesheet" id="crayon-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=2.7.1" type="text/css" media="all"><link rel="stylesheet" id="crayon-theme-familiar-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/themes/familiar/familiar.css?ver=2.7.1" type="text/css" media="all"><link rel="stylesheet" id="crayon-font-monaco-css" href="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.7.1" type="text/css" media="all"><script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script><script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script><script type="text/javascript">/* <![CDATA[ */var CrayonSyntaxSettings = {"version":"2.7.1","is_admin":"0","ajaxurl":"http:\/\/www.bizhongbio.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};/* ]]> */</script><script type="text/javascript" src="' . site_url() . '/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=2.7.1"></script>';
+//   }
+//   return $content;
+// }
 
-add_filter('the_content', 'Crayon_Resources');
+// add_filter('the_content', 'Crayon_Resources');
 
 
-// 上一篇，下一篇文章链接
+// 设置上一篇、下一篇文章链接
 function articleAdjacent() {
   $categories = get_the_category();
   $categoryIDS = array();
@@ -329,7 +329,7 @@ function showComments($comment, $args, $depth) {
     <?php
 }
 
-// 用户回复评论邮件通知给网友（勾选“回复时邮件通知我”）
+// 回复评论邮件通知评论者（勾选“回复时邮件通知我”）
 function comment_mail_notify($comment_id) {
   $admin_notify = '1';// admin：要不要收回复通知（'1' = 要；'0' = 不要）
   $admin_email = get_bloginfo('admin_email');// $admin_email：可改为你指定的 email
@@ -348,37 +348,42 @@ function comment_mail_notify($comment_id) {
   if ($parent_id != '' && $spam_confirmed != 'spam' && $notify == '1') {
     $wp_email = 'no-reply@' . preg_replace('#^www.#', '', strtolower($_SERVER['SERVER_NAME']));// email 发出点，no-reply 可改为可用的 email
     $to = trim(get_comment($parent_id)->comment_author_email);
-    $subject = '[' . get_option('blogname') . '] 你在《' . get_the_title($comment->comment_post_ID) . '》的评论有了新回复';
-    $message = '<div style="width:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;background:#f2f2f2;">
-      <div style="margin:0 auto;padding:16px;width:80%;background:#fff;">
-        <div style="font-size:16px;line-height:1.5;color:#333;">
-          <p>' . trim(get_comment($parent_id)->comment_author) . '，你好！你在《' . get_the_title($comment->comment_post_ID) . '》的评论有了新回复：</p>
-          <p>你的评论：<span style="color:#666;">'
-          . trim(get_comment($parent_id)->comment_content) . '</span></p>
-          <p>' . trim($comment->comment_author) . '给你的回复：<span style="color:#666;">' . trim($comment->comment_content) . '</span></p>
-        </div>
-        <div style="margin-top:64px;font-size:12px;line-height:1.5;color:#999;">
-          <p>此信为系统邮件，请不要直接回复。</p>
-          <p>&copy; ' . date('Y') . bloginfo('name') . '</p>
-        </div>
-      </div>
-    </div>';
-    $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
-    $headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
+    $subject = '你在《' . get_the_title($comment->comment_post_ID) . '》的评论有了新回复';
+    $message = '<table style="padding:32px;width:100%;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen,Ubuntu,Cantarell,\"Fira Sans\",\"Droid Sans\",\"Helvetica Neue\",sans-serif;text-align:left;background:#fff;">
+      <tr style="font-size:24px;line-height:32px;color:#333;">
+        <th>Hi，' . trim(get_comment($parent_id)->comment_author) . '！</th>
+      </tr>
+      <tr style="font-size:16px;line-height:24px;color:#666;">
+        <td style="padding:16px 0;">
+          <p style="margin:0;padding:0;">你在《<a style="text-decoration:underline;color:#0fae6f;" href="' . $post_link . '" target="_blank">' . get_the_title($comment->comment_post_ID) . '</a>》的评论有了新回复！</p>
+          <p style="margin:0;padding:0;">你的评论：' . trim(get_comment($parent_id)->comment_content) . '</p>
+          <p style="margin:0 0 16px 0;padding:0;"><strong>' . trim($comment->comment_author) . '</strong> 给你的回复：' . trim($comment->comment_content) . '</p>
+          <a style="display:inline-block;border-radius:2px;padding:8px 16px;text-decoration:none;color:#fff;background:#0fae6f;" href="' . htmlspecialchars(get_comment_link($parent_id)) . '" target="_blank">查看评论</a>
+        </td>
+      </tr>
+      <tr style="font-size:12px;line-height:18px;color:#999;">
+        <td>
+          <p style="margin:0;padding:0;">本邮件由系统自动发送，请勿回复。</p>
+          <p style="margin:0;padding:0;">&copy; ' . date('Y') . ' <a style="text-decoration:underline;color:#999;" href="' . get_option('home') . '"  target="_blank">' . get_option('blogname') . '</a></p>
+        </td>
+      </tr>
+    </table>';
+    $from = 'From: "' . get_option('blogname') . '" <$wp_email>';
+    $headers = '$from\nContent-Type: text/html; charset=' . get_option('blog_charset') . '\n';
     wp_mail($to, $subject, $message, $headers);
   }
 }
 
 add_action('comment_post', 'comment_mail_notify');
 
-// 文章评论自动加勾选栏
+// 文章发表评论自动加勾选栏
 function add_checkbox() {
   echo '<input id="comment_mail_notify" name="comment_mail_notify" type="checkbox" value="comment_mail_notify" checked><label for="comment_mail_notify">回复时邮件通知我</label>';
 }
 
 add_action('comment_form', 'add_checkbox');
 
-// 侧边栏显示近期评论
+// 边栏显示近期评论
 function recent_comments($no_comments = 10, $comment_len = 88) {
   $comments_query = new WP_Comment_Query();
   $comments = $comments_query->query(array('number' => $no_comments, 'status' => 'approve'));
