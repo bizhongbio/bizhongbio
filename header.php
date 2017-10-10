@@ -84,7 +84,7 @@
 					
 				</nav>
 <?php else : ?>
-		<header id="header" role="banner"<?php if (is_home()) echo ' style="position: absolute; background: rgba(0, 0, 0, .8);"'; ?>>
+		<header id="header" role="banner">
 			<div class="header-content">
 				<a id="btn-nav" href="javascript:void(0);"><i class="fa fa-navicon"></i></a>
 				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>

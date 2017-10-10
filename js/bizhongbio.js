@@ -86,92 +86,9 @@ $(function() {
   // ------------------------------------------------------------------ 首页
 
   // 首页处理主函数
-  // - 轮播图（切换方式：自动、点击轮播图导航菜单、按下键盘左右方向键、触屏设备左右滑动）
   // - 加载下一页 点击加载更多按钮
   function handleHome() {
-    var len = $('#hero-slides .slide').length,// 轮播图张数
-        slideIndex = 1,// 当前轮播图索引
-        timer = null,// 定时器
-        startPosition = {},// 开始位置
-        endPosition = {},// 结束位置
-        isScrolling = -1, // 判断是水平滚动还是垂直滚动
-        onloading = false;// 是否正在加载
-
-    // 切换轮播图
-    function slidesAnimation() {
-      $('#hero-slides .slide').each(function(i) {
-        $(this).eq(slideIndex).css('left', '0%').end().not(slideIndex).css('left', (-(slideIndex - i) * 100) + '%');
-        $('.slides-nav a').eq(slideIndex).addClass('current').siblings().removeClass('current');
-      });
-      slideIndex >= len - 1 ? slideIndex = 0 : slideIndex++;
-    }
-
-    // 切换轮播图 自动
-    timer = setInterval(slidesAnimation, 6000);
-
-    // 切换轮播图 点击轮播图导航菜单
-    $('.slides-nav a').each(function() {
-      $(this).on('click', function(event) {
-        clearInterval(timer);
-        slideIndex = $(this).index();
-        slidesAnimation();
-        event.preventDefault();
-      });
-    });
-
-    // 切换轮播图 按下键盘左右方向键
-    $(document).on('keydown', function(event) {
-      switch (event.keyCode) {
-        case 37:// 左方向键
-          clearInterval(timer);
-          slideIndex >= 2 ? slideIndex -= 2 : slideIndex += 2;
-          slidesAnimation();
-          break;
-        case 39:// 右方向键
-          clearInterval(timer);
-          slidesAnimation();
-          break;
-      }
-    });
-
-    // 切换轮播图 触屏设备左右滑动
-    // - 滑动开始
-    $('#hero-slides').on('touchstart', function(event) {
-      var touch = event.targetTouches[0];
-      startPosition = {
-        x: touch.pageX,
-        y: touch.pageY
-      };
-    });
-
-    // - 滑动
-    $('#hero-slides').on('touchmove', function(event) {
-      if (event.targetTouches.length === 1) {
-        var touch = event.targetTouches[0];
-        endPosition = {
-          x: touch.pageX - startPosition.x,
-          y: touch.pageY - startPosition.y
-        };
-        isScrolling = Math.abs(endPosition.x) > Math.abs(endPosition.y) ? 0 : 1;// 0：水平滚动，1：垂直滚动
-        if (isScrolling === 0) {// 水平滚动
-          event.preventDefault();
-        }
-      }
-    });
-
-    // - 滑动释放
-    $('#hero-slides').on('touchend', function(event) {
-      if (isScrolling === 0) {// 水平滚动
-        if (endPosition.x > 10) {// 右滑
-          clearInterval(timer);
-          slideIndex >= 2 ? slideIndex -= 2 : slideIndex += 2;
-          slidesAnimation();
-        } else if (endPosition.x < -10) {// 左滑
-          clearInterval(timer);
-          slidesAnimation();
-        }
-      }
-    });
+    var onloading = false;// 是否正在加载
 
     // 判断是否含有下一页
     if (!$('.load-more a').length) {
