@@ -5,7 +5,7 @@ Theme URI: https://github.com/bizhongbio/bizhongbio
 Author: Lan Bizhong
 Author URI: https://bizhong.github.io/
 Description: Bizhongbio is a free, minimalistic, and responsive WordPress Blog Theme.
-Version: 2.1.3
+Version: 2.1.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
@@ -818,14 +818,15 @@ body {
   line-height: 1.5;
   color: #000;
 }
-.article-content p,
-.article-content ul li,
-.related-articles p,
-.prompt p {
-  margin-bottom: 16px;
+.article-content {
   font-size: 1em;
   line-height: 1.5;
   color: #666;
+}
+.article-content p,
+.article-content hr,
+.commentform p {
+  margin-bottom: 16px;
 }
 .article-content img {
   width: auto;
@@ -833,15 +834,36 @@ body {
   height: auto;
 }
 .article-content strong {
-  font-weight: 400;
-  color: #000;
+  font-weight: 700;
 }
-.article-content ul {
-  padding-left: 16px;
+.article-content em {
+  font-weight: 400;
+  font-style: italic;
+}
+.article-content del {
+  text-decoration: line-through;
+  color: #666;
+}
+.article-content ul,
+.article-content ol {
+  margin-bottom: 16px;
+  padding-left: 32px;
 }
 .article-content ul li {
   list-style: disc outside none;
   margin: 8px 0;
+}
+.article-content ol li {
+  list-style: decimal outside none;
+  margin: 8px 0;
+}
+.article-content blockquote {
+  margin: 16px 0;
+  padding: 16px;
+  background: #f2f2f2;
+}
+.article-content blockquote p {
+  margin-bottom: 0;
 }
 .article-copyright {
   font-size: .875em;
@@ -865,6 +887,7 @@ body {
 }
 .related-articles p {
   margin: 8px;
+  color: #666;
 }
 .related-article figcaption {
   padding: 8px 0 0;
@@ -877,8 +900,10 @@ body {
   text-overflow: ellipsis;
   word-break: keep-all;
 }
-.prompt p {
-  margin: 0;
+.prompt p,
+.comment-text,
+.recommended-posts a {
+  color: #666;
 }
 .comment {
   border-bottom: 1px solid #e5e5e5;
@@ -906,10 +931,6 @@ body {
   font-size: .875em;
   color: #d0d4d8;
 }
-.comment-text,
-.recommended-posts a {
-  color: #666;
-}
 .children {
   margin-left: 48px;
 }
@@ -920,9 +941,6 @@ body {
 .commentform {
   position: relative;
   padding-bottom: 42px;
-}
-.commentform p {
-  margin-bottom: 16px;
 }
 .commentform input,
 .commentform textarea {

@@ -1,7 +1,7 @@
 # Bizhongbio
 
 **Author**: Lan Bizhong  
-**Version**: 2.1.3  
+**Version**: 2.1.4  
 **License**: GNU General Public License v2 or later  
 **License URI**: http://www.gnu.org/licenses/gpl-2.0.html  
 **Tags**: blog, one-column, two-columns, left-sidebar, custom-header, custom-menu, featured-images, flexible-header, full-width-template, microformats, threaded-comments
@@ -10,7 +10,13 @@
 
 Bizhongbio 是一个免费、简约、响应式的 WordPress 博客主题。
 
-![首页](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/screenshot_home-slides.png)
+- [无图片轮播版](https://github.com/bizhongbio/bizhongbio/tree/master)（master 分支）
+
+![无图片轮播版首页](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/screenshot_home.png)
+
+- [图片轮播版](https://github.com/bizhongbio/bizhongbio/tree/develop)（develop 分支）
+
+![图片轮播版首页](https://github.com/bizhongbio/resources/blob/master/images/bizhongbio/screenshot_home-slides.png)
 
 ## 环境准备
 
@@ -22,6 +28,11 @@ WordPress 新手入门指南，包括 WordPress 简介、安装、后台功能�
 
 > [XAMPP](https://www.apachefriends.org/zh_cn/index.html)  
 > [WordPress](https://cn.wordpress.org/)
+
+### 主题下载
+
+- [无图片轮播版](https://github.com/bizhongbio/bizhongbio/archive/master.zip)
+- [图片轮播版](https://github.com/bizhongbio/bizhongbio/archive/develop.zip)
 
 ## 后台设置
 
@@ -139,11 +150,20 @@ _设置 ▸ XML-Sitemap_
 
 ### 我在撰写新文章时需要注意什么？
 
-> 特色图片，默认尺寸：414 x 414（正方形尺寸）。
+> 固定链接，最好文章名英文；  
+> 特色图片，默认尺寸：414 x 414（正方形尺寸）；  
+> 富文本编辑器，不要使用：插入“More”标签（`<!--more-->`）、一级标题（`<h1>`）、五级标题（`<h5>`）、六级标题（`<h6>`）、预格式化（`<pre>`）。
 
 以上还不能解答您的问题或您有建议的话，提交一个 [issue](https://github.com/bizhongbio/bizhongbio/issues) 给我！
 
 ## 版本说明
+
+### 2.1.4
+
+_2017-10-10_
+
+- 增加文章富文本编辑器大部分样式
+- 推出无图片轮播版 Bizhongbio 主题（develop 分支）
 
 ### 2.1.3
 
