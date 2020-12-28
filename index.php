@@ -36,7 +36,7 @@
             <div class="slide-content">
               <div class="slide-info">
                 <h2>观看视频</h2>
-                <h3>我是证人 港囧 左耳 分手大师</h3>
+                <h3>拿起手机、相机，记录美好生活。</h3>
               </div>
             </div>
           </a>

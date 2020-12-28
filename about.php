@@ -17,10 +17,10 @@ Template Name: 关于
           </div>
           <!-- 在这里修改社交媒体 -->
           <div class="social">
-            <a href="https://github.com/bizhong" title="bizhong (兰必钟) · GitHub" target="_blank"><i class="fa fa-github"></i></a>
-            <a href="https://www.behance.net/bizhong" title="Bizhong Lan on Behance" target="_blank"><i class="fa fa-behance"></i></a>
-            <a href="http://weibo.com/bizhongbio" title="兰必钟的微博" target="_blank"><i class="fa fa-weibo"></i></a>
-            <a href="mailto:bizhongbio@outlook.com" title="Email Me" target="_blank"><i class="fa fa-envelope-o"></i></a>
+            <a href="" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
+            <a href="" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+            <a href="" title="微博" target="_blank"><i class="fa fa-weibo"></i></a>
+            <a href="mailto:" title="Email Me" target="_blank"><i class="fa fa-envelope-o"></i></a>
           </div>
         </section>
       </div>

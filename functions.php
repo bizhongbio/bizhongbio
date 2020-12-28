@@ -82,31 +82,21 @@ function headDescription() {
     echo $description;
   } else {
     if (is_home()) {// 首页
-      echo '双鱼bizhongbio，是专注于分享web前端开发技术的个人博客。磨砺，聚变。没有伞的孩子，必须努力奔跑。';
+      echo '';
     } else if (is_category()) {// 分类目录页面
       if (is_category('web')) {
-        echo '双鱼bizhongbio 前端包含 HTML，CSS，JavaScript，HTML5，CSS3，jQuery 等前端开发技术。';
-      } else if (is_category('back')) {
-        echo '双鱼bizhongbio 后端包含 PHP，WordPress，NodeJS 等后端开发技术。';
-      } else if (is_category('mobile')) {
-        echo '双鱼bizhongbio 移动包含 iOS，Android 等移动开发技术。';
-      } else if (is_category('design')) {
-        echo '双鱼bizhongbio 设计包含交互设计，视觉设计，网页设计，UX设计，UI设计等。';
-      } else if (is_category('other')) {
-        echo '双鱼bizhongbio 其它';
+        echo '';
+      } else {
+        echo '';
       }
     } else if (is_page()) {// 自定义页面
-      if (is_page('project')) {
-        echo '双鱼bizhongbio 项目：激发灵感，为梦编织。指尖的每次碰撞，为项目增光添彩。';
-      } else if (is_page('work')) {
-        echo '双鱼bizhongbio 作品（个人作品集）：沉浸其中，点燃自己心中的创意之火。';
-      } else if (is_page('video')) {
-        echo '双鱼bizhongbio 视频：我是证人、港囧、左耳、分手大师。';
-      } else if (is_page('about')) {
-        echo '双鱼bizhongbio 关于';
+      if (is_page('about')) {
+        echo '';
+      } else {
+        echo '';
       }
     } else {
-      echo '双鱼bizhongbio，是专注于分享web前端开发技术的个人博客。磨砺，聚变。没有伞的孩子，必须努力奔跑。';
+      echo '';
     }
   }
 }
@@ -125,33 +115,23 @@ function headKeywords() {
     echo $keywords;
   } else {
     if (is_home()) {// 首页
-      echo '双鱼,双鱼bizhongbio,兰必钟,bizhong,bizhongbio';
+      echo '';
     } else if (is_category()) {// 分类目录页面
       if (is_category('web')) {
-        echo 'web,前端,双鱼前端,双鱼bizhongbio前端,bizhongbio前端';
-      } else if (is_category('back')) {
-        echo 'back,后端,双鱼后端,双鱼bizhongbio后端,bizhongbio后端';
-      } else if (is_category('mobile')) {
-        echo 'mobile,移动,双鱼移动,双鱼bizhongbio移动,bizhongbio移动';
-      } else if (is_category('design')) {
-        echo 'design,设计,双鱼设计,双鱼bizhongbio设计,bizhongbio设计';
-      } else if (is_category('other')) {
-        echo 'other,其它,双鱼其它,双鱼bizhongbio其它,bizhongbio其它';
+        echo '';
+      } else {
+        echo '';
       }
     } else if (is_page()) {// 自定义页面
-      if (is_page('project')) {
-        echo 'project,项目,双鱼项目,双鱼bizhongbio项目,bizhongbio项目';
-      } else if (is_page('work')) {
-        echo 'work,作品,双鱼作品,双鱼bizhongbio作品,bizhongbio作品,个人作品集';
-      } else if (is_page('video')) {
-        echo 'video,视频,双鱼视频,双鱼bizhongbio视频,bizhongbio视频';
-      } else if (is_page('about')) {
-        echo 'about,关于,双鱼关于,双鱼bizhongbio关于,bizhongbio关于';
+      if (is_page('about')) {
+        echo '';
+      } else {
+        echo '';
       }
     } else if (is_tag()) {// 标签页面
       echo single_tag_title();
     } else {
-      echo '双鱼,双鱼bizhongbio,兰必钟,bizhong,bizhongbio';
+      echo '';
     }
   }
 }
@@ -299,13 +279,13 @@ function articleAdjacent() {
     previous_post_link('上一篇: %link', '%title', true);
     echo '<br/>';
   } else {
-    echo '<p>这一刻，一只鱼已经游到下游了。</p>';
+    echo '<p>上一篇: 没有</p>';
   }
   if (get_next_post($categoryIDS)) {
     next_post_link('下一篇: %link', '%title', true);
     echo '<br/>';
   } else {
-    echo '<p>这一刻，另一只鱼已经游到上游了。</p>';
+    echo '<p>下一篇: 没有</p>';
   }
 }
 

@@ -24,8 +24,8 @@
   <a name="respond"></a>
   <h2>发表评论</h2>
   <form class="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
-    <?php if (!is_user_logged_in()) : ?><input id="author" name="author" type="text" tabindex="1" value="<?php echo $comment_author; ?>" placeholder="姓名（必填）">
-    <input id="email" name="email" type="text" tabindex="2" value="<?php echo $comment_author_email; ?>" placeholder="Email（必填）">
+    <?php if (!is_user_logged_in()) : ?><input id="author" name="author" type="text" tabindex="1" value="<?php echo $comment_author; ?>" placeholder="昵称（必填）">
+    <input id="email" name="email" type="text" tabindex="2" value="<?php echo $comment_author_email; ?>" placeholder="邮箱（必填）">
     <input id="url" name="url" type="text" tabindex="3" value="<?php echo $comment_author_url; ?>" placeholder="网站">
     <?php else : ?><p>你已经以 <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a> 账号登录，<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出当前账号">退出当前账号</a>。</p>
     <?php endif; ?><textarea id="comment" name="comment" tabindex="4" placeholder="说点什么吧"></textarea>
