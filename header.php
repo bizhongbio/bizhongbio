@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="description" content="<?php headDescription(); ?>">
 		<meta name="keywords" content="<?php headKeywords(); ?>">
-		<meta name="author" content="兰必钟(Lan Bizhong), https://bizhong.github.io/">
+		<meta name="author" content="LAN Bizhong, https://lanbizhong.com/">
 		<meta name="robots" content="index, follow">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-title" content="<?php bloginfo('name'); ?>">

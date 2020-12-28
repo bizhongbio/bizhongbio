@@ -1,7 +1,7 @@
 <aside class="sidebar">
           <article class="promos">
             <!-- 在这里修改 GitHub 地址 -->
-            <a href="https://github.com/bizhong" title="bizhong (兰必钟) · GitHub" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+            <a href="" title="GitHub" target="_blank"><i class="fa fa-github"></i> GitHub</a>
           </article>
           <section class="recommended-posts">
             <h2>推荐文章</h2>

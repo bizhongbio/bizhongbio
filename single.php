@@ -23,10 +23,10 @@
           <section class="article-share clearfix">
             <h2>分享到</h2>
             <div class="bdsharebuttonbox">
-              <a class="bds_tsina" data-cmd="tsina" href="#" title="分享到新浪微博"></a>
+              <a class="bds_tsina" data-cmd="tsina" href="#" title="分享到微博"></a>
               <a class="bds_weixin" data-cmd="weixin" href="#" title="分享到微信"></a>
               <a class="bds_qzone" data-cmd="qzone" href="#" title="分享到QQ空间"></a>
-              <a class="bds_copy" data-cmd="copy" href="#" title="分享到复制网址"></a>
+              <a class="bds_copy" data-cmd="copy" href="#" title="复制文章链接"></a>
               <a class="bds_more" data-cmd="more" href="#"></a>
               <a class="bds_count"></a>
             </div>
